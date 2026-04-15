@@ -1,6 +1,6 @@
-# Profile — Split-Screen Timeline
+# Profile · Split-Screen Timeline
 
-A single-file PHP landing page that presents a portfolio of events and achievements in a split-screen layout.
+A single-file PHP landing page presenting a developer profile alongside a scrollable timeline of events and achievements.
 
 ![Preview](screenshot.png)
 
@@ -8,15 +8,23 @@ A single-file PHP landing page that presents a portfolio of events and achieveme
 
 | Panel | Content |
 |-------|---------|
-| **Left** | Detail view — title, type badge, description, and tags for the selected event |
-| **Right** | Scrollable timeline grouped by year; click any item to load its details |
+| **Left — top** | Profile hero: avatar, name, handle, bio, and info pills |
+| **Left — bottom** | Detail view for the selected event (title, type badge, description, tags) |
+| **Right** | Scrollable timeline grouped by year with colour-coded event-type badges |
 
-## Features
+Clicking any timeline item highlights it and fades in its details on the left.
 
-- Split-screen 50/50 layout, stacks vertically on mobile (≤ 768 px)
-- Timeline events grouped by year with a vertical track line and animated dot indicators
-- Smooth fade-in transition when switching between events
-- No dependencies — pure HTML, CSS, and vanilla JavaScript inside a single `.php` file
+## Event types & colours
+
+| Type | Colour |
+|------|--------|
+| Launch | Emerald |
+| Award | Amber |
+| Role | Blue |
+| Publication | Orange |
+| Certification | Teal |
+| Project | Purple |
+| Talk | Pink |
 
 ## Usage
 
@@ -26,21 +34,23 @@ Serve with PHP's built-in server:
 php -S localhost:8080
 ```
 
-Then open `http://localhost:8080/index.php` in your browser.
+Then open `http://localhost:8080/index.php`.
 
-## Customising events
+## Customising
 
-Edit the `events` array at the bottom of `index.php`. Each entry accepts:
+Edit the `events` array near the bottom of `index.php`:
 
 ```js
 {
     id:          1,           // unique integer
-    year:        2026,        // used for grouping
-    date:        "Mar 2026",  // displayed in the timeline and detail panel
-    type:        "Launch",    // badge label (Award, Role, Project, Talk, …)
+    year:        2026,        // used for year grouping
+    date:        "Mar 2026",  // displayed label
+    type:        "Launch",    // controls badge colour (see table above)
     title:       "…",
-    subtitle:    "…",         // shown under the title in the timeline
-    description: "…",         // long-form text shown in the detail panel
+    subtitle:    "…",         // shown under title in the timeline
+    description: "…",         // long-form text in the detail panel
     tags:        ["Tag1", "Tag2"]
 }
 ```
+
+To update profile details (name, bio, pills), edit the `#profile` block in the HTML section of `index.php`.
