@@ -1,10 +1,17 @@
-# Profile · Split-Screen Timeline
+# Profile
+
+This repository contains two independent front-end demos:
+
+1. **Split-Screen Timeline** — a single-file PHP landing page (below)
+2. **VEX Hero Section** — a React + Vite app (further down)
+
+## Split-Screen Timeline
 
 A single-file PHP landing page presenting a developer profile alongside a scrollable timeline of events and achievements.
 
 ![Preview](screenshot.png)
 
-## Layout
+### Layout
 
 | Panel | Content |
 |-------|---------|
@@ -14,7 +21,7 @@ A single-file PHP landing page presenting a developer profile alongside a scroll
 
 Clicking any timeline item highlights it and fades in its details on the left.
 
-## Event types & colours
+### Event types & colours
 
 | Type | Colour |
 |------|--------|
@@ -26,7 +33,7 @@ Clicking any timeline item highlights it and fades in its details on the left.
 | Project | Purple |
 | Talk | Pink |
 
-## Usage
+### Usage
 
 Serve with PHP's built-in server:
 
@@ -36,7 +43,7 @@ php -S localhost:8080
 
 Then open `http://localhost:8080/index.php`.
 
-## Customising
+### Customising
 
 Edit the `events` array near the bottom of `index.php`:
 
@@ -54,3 +61,32 @@ Edit the `events` array near the bottom of `index.php`:
 ```
 
 To update profile details (name, bio, pills), edit the `#profile` block in the HTML section of `index.php`.
+
+## VEX Hero Section (React + Vite)
+
+A separate React + TypeScript + Tailwind CSS + Vite app (`src/`) implementing a full-screen video hero section with a liquid-glass navbar and staggered entrance animations.
+
+| Desktop | Mobile |
+|---------|--------|
+| ![Hero — desktop](docs/screenshots/hero-desktop.png) | ![Hero — mobile](docs/screenshots/hero-mobile.png) |
+
+Highlights:
+
+- Full-screen autoplay/loop/muted background video, no dark overlay
+- `.liquid-glass` navbar and CTA styling with a gradient-border mask effect
+- `AnimatedHeading` — character-by-character entrance animation
+- `FadeIn` — staggered opacity fade-ins for the subheading, buttons, and tag card
+- Google Font `Inter` wired through `index.html` and `tailwind.config.js`
+
+### Usage
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the printed local URL (defaults to `http://localhost:5173`).
+
+```bash
+npm run build   # type-check + production build
+```
