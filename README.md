@@ -5,6 +5,10 @@ This repository contains two independent front-end demos:
 1. **Split-Screen Timeline** — a single-file PHP landing page (below)
 2. **VEX Hero Section** — a React + Vite app (further down)
 
+**Live:** the VEX Hero Section is deployed to GitHub Pages on every push to the default branch: **https://aldoy-net.github.io/.profile/**
+
+The Split-Screen Timeline requires a PHP runtime and is not deployed to Pages (static hosting only) — run it locally per the instructions below.
+
 ## Split-Screen Timeline
 
 A single-file PHP landing page presenting a developer profile alongside a scrollable timeline of events and achievements.
