@@ -5,6 +5,13 @@ This repository contains two independent front-end demos:
 1. **Split-Screen Timeline** — a single-file PHP landing page (below)
 2. **VEX Hero Section** — a React + Vite app (further down)
 
+[![Deploy](https://img.shields.io/github/actions/workflow/status/AlDoy-Net/.profile/deploy-pages.yml?style=flat-square&label=deploy&logo=github)](https://github.com/AlDoy-Net/.profile/actions/workflows/deploy-pages.yml)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+
 **Live:** the VEX Hero Section is deployed to GitHub Pages on every push to the default branch: **https://aldoy-net.github.io/.profile/**
 
 The Split-Screen Timeline requires a PHP runtime and is not deployed to Pages (static hosting only) — run it locally per the instructions below.
@@ -94,3 +101,7 @@ Then open the printed local URL (defaults to `http://localhost:5173`).
 ```bash
 npm run build   # type-check + production build
 ```
+
+### Static HTML version
+
+`public/hero.html` is the same hero as a single dependency-free HTML file (inline CSS + vanilla JS, no build step). It is copied into the Pages build, so it is served at `https://aldoy-net.github.io/.profile/hero.html`, and it also opens straight from disk. It adds a [shields.io](https://shields.io) badge row and a link to [profileme.dev](https://profileme.dev).
