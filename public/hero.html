@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEX</title>
+  <meta name="description" content="VEX — Investing. Building. Advisory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #000;
+      color: #fff;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .hero { position: relative; min-height: 100vh; width: 100%; overflow: hidden; background: #000; }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .content { position: relative; z-index: 10; display: flex; flex-direction: column; min-height: 100vh; }
+    .pad-x { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+    /* liquid glass */
+    .liquid-glass {
+      background: rgba(0, 0, 0, 0.4);
+      background-blend-mode: luminosity;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: none;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .liquid-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.3) 0%, rgba(255,255,255,.1) 20%, rgba(255,255,255,0) 40%,
+        rgba(255,255,255,0) 60%, rgba(255,255,255,.1) 80%, rgba(255,255,255,.3) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* navbar */
+    .nav-wrap { padding-top: 1.5rem; }
+    nav { display: flex; align-items: center; justify-content: space-between; border-radius: .75rem; padding: .5rem 1rem; }
+    .logo { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.025em; }
+    .links { display: none; align-items: center; gap: 2rem; }
+    .links a { font-size: .875rem; transition: color .15s; }
+    .links a:hover { color: #d1d5db; }
+
+    .btn { border-radius: .5rem; border: 0; font-weight: 500; transition: background-color .15s, color .15s; }
+    .btn-white { background: #fff; color: #000; }
+    .btn-white:hover { background: #f3f4f6; }
+    .nav-btn { padding: .5rem 1.5rem; font-size: .875rem; }
+    .cta { padding: .75rem 2rem; }
+    .btn-glass { color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .btn-glass:hover { background: #fff; color: #000; }
+
+    /* body */
+    .main { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 3rem; }
+    .grid { display: block; }
+    h1 {
+      margin: 0 0 1rem;
+      font-size: 2.25rem; font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+    h1 .line { display: block; }
+    h1 .ch {
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-18px);
+      transition: opacity 500ms ease-out, transform 500ms ease-out;
+    }
+    h1.on .ch { opacity: 1; transform: none; }
+
+    .fade { opacity: 0; transition: opacity 1000ms; }
+    .fade.on { opacity: 1; }
+
+    .sub { margin: 0 0 1.25rem; font-size: 1rem; color: #d1d5db; }
+    .actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    .badges { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.5rem; }
+    .badges img { display: block; height: 20px; }
+
+    .tag-wrap { display: flex; align-items: flex-end; justify-content: flex-start; margin-top: 1.5rem; }
+    .tag { border-radius: .75rem; border: 1px solid rgba(255,255,255,.2); padding: .75rem 1.5rem; font-size: 1.125rem; font-weight: 300; }
+
+    .credit { margin-top: 1.25rem; font-size: .75rem; color: rgba(255,255,255,.6); }
+    .credit a { text-decoration: underline; text-underline-offset: 3px; }
+    .credit a:hover { color: #fff; }
+
+    @media (min-width: 768px) {
+      .pad-x { padding-left: 3rem; padding-right: 3rem; }
+      .links { display: flex; }
+      h1 { font-size: 3rem; }
+      .sub { font-size: 1.125rem; }
+      .tag { font-size: 1.25rem; }
+    }
+    @media (min-width: 1024px) {
+      .pad-x { padding-left: 4rem; padding-right: 4rem; }
+      .main { padding-bottom: 4rem; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; align-items: end; }
+      h1 { font-size: 3.75rem; }
+      .tag-wrap { margin-top: 0; justify-content: flex-end; }
+      .tag { font-size: 1.5rem; }
+    }
+    @media (min-width: 1280px) { h1 { font-size: 4.5rem; } }
+    @media (prefers-reduced-motion: reduce) {
+      h1 .ch, .fade { transition: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <video
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4"
+      autoplay loop muted playsinline></video>
+
+    <div class="content">
+      <div class="nav-wrap pad-x">
+        <nav class="liquid-glass">
+          <span class="logo">VEX</span>
+          <div class="links">
+            <a href="#">Story</a>
+            <a href="#">Investing</a>
+            <a href="#">Building</a>
+            <a href="#">Advisory</a>
+          </div>
+          <button class="btn btn-white nav-btn">Start a Chat</button>
+        </nav>
+      </div>
+
+      <div class="main pad-x">
+        <div class="grid">
+          <div>
+            <h1 id="heading" data-text="Shaping tomorrow&#10;with vision and action." aria-label="Shaping tomorrow with vision and action."></h1>
+
+            <div class="fade" data-delay="800">
+              <p class="sub">We back visionaries and craft ventures that define what comes next.</p>
+            </div>
+
+            <div class="fade" data-delay="1200">
+              <div class="actions">
+                <button class="btn btn-white cta">Start a Chat</button>
+                <button class="btn btn-glass liquid-glass cta" style="border-radius:.5rem">Explore Now</button>
+              </div>
+            </div>
+
+            <div class="fade" data-delay="1600">
+              <div class="badges">
+                <a href="https://github.com/AlDoy-Net/.profile/actions/workflows/deploy-pages.yml">
+                  <img alt="Deploy status" src="https://img.shields.io/github/actions/workflow/status/AlDoy-Net/.profile/deploy-pages.yml?style=flat-square&label=deploy&logo=github" />
+                </a>
+                <img alt="React" src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=white" />
+                <img alt="Vite" src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
+                <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+                <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
+                <a href="https://github.com/AlDoy-Net">
+                  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-AlDoy--Net-181717?style=flat-square&logo=github" />
+                </a>
+              </div>
+              <p class="credit">Build your own developer profile at <a href="https://profileme.dev" target="_blank" rel="noopener">profileme.dev</a></p>
+            </div>
+          </div>
+
+          <div class="tag-wrap">
+            <div class="fade" data-delay="1400">
+              <div class="tag liquid-glass">Investing. Building. Advisory.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var CHAR_DELAY = 30;
+      var heading = document.getElementById('heading');
+      heading.dataset.text.split('\n').forEach(function (line, li) {
+        var row = document.createElement('span');
+        row.className = 'line';
+        row.setAttribute('aria-hidden', 'true');
+        line.split('').forEach(function (c, ci) {
+          var s = document.createElement('span');
+          s.className = 'ch';
+          s.style.transitionDelay = (li * line.length * CHAR_DELAY + ci * CHAR_DELAY) + 'ms';
+          s.textContent = c === ' ' ? ' ' : c;
+          row.appendChild(s);
+        });
+        heading.appendChild(row);
+      });
+      setTimeout(function () { heading.classList.add('on'); }, 200);
+
+      document.querySelectorAll('.fade').forEach(function (el) {
+        setTimeout(function () { el.classList.add('on'); }, +el.dataset.delay);
+      });
+    })();
+  </script>
+</body>
+</html>
